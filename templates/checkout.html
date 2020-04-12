@@ -192,6 +192,14 @@ var use_default_shipping = document.querySelector("input[name=use_default_shippi
 var same_billing_address = document.querySelector("input[name=same_billing_address]")
 var use_default_billing = document.querySelector("input[name=use_default_billing]")
 
+same_billing_address.addEventListener('change', function() {
+  if(this.checked) {
+    hideable_billing_form_fields.hide();
+  }else {
+    hideable_billing_form_fields.show();
+  }
+})
+
 use_default_shipping.addEventListener('change', function() {
   if(this.checked) {
     hideable_shipping_form.hide();
@@ -200,13 +208,7 @@ use_default_shipping.addEventListener('change', function() {
   }
 })
 
-same_billing_address.addEventListener('change', function() {
-  if(this.checked) {
-    hideable_billing_form_fields.hide();
-  }else {
-    hideable_billing_form_fields.show();
-  }
-})
+
 
 use_default_billing.addEventListener('change', function() {
   if(this.checked) {
