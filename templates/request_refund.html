@@ -4,16 +4,16 @@
 {% block content %}
 
   <!--Main layout-->
-  <main>
-    <div class="container">
-        <h2>Request Refund</h2>
-        <form methon="POST">
-            {% csrf_token %}
-            {{ form|crispy }}
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-    </div>
-  </main>
+<main>
+  <div class="container">
+      <h2>Request Refund</h2>
+      <form method="POST">
+          {% csrf_token %}
+          {{ form|crispy }}
+          <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+  </div>
+</main>
 
 
 {% endblock content %}
