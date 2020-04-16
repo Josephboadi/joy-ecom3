@@ -24,11 +24,14 @@
           of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
           for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
 
+          <button class="btn btn-primary"><a class="text-white" href="{% provider_login_url "facebook" method="oauth2" %}"> Login with Facebook   <i class="fab fa-facebook"> </i></a></button> Or
+          <button class="btn btn-danger"><a class="text-white" href="{% provider_login_url "google" %}"> Login with Google    <i class="fab fa-google-plus-g"> </i></a></button>
+
           <div class="socialaccount_ballot">
 
-            <ul class="socialaccount_providers">
+            {% comment %} <ul class="socialaccount_providers">
               {% include "socialaccount/snippets/provider_list.html" with process="login" %}
-            </ul>
+            </ul> {% endcomment %}
 
             <div class="login-or">{% trans 'or' %}</div>
 
@@ -47,8 +50,8 @@
             {% if redirect_field_value %}
             <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
             {% endif %}
-            <a class="btn btn-default" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
             <button class="btn btn-primary" type="submit">{% trans "Sign In" %}</button>
+            <a class="btn btn-default" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
           </form>
           </div>
         </div>

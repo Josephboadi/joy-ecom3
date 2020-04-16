@@ -33,6 +33,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.google',
     'crispy_forms',
     'django_countries',
     'stripe',
@@ -143,13 +145,33 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
+    'allauth.account.adapter.DefaultAccountAdapter',
 )
 
-ACCOUNT_EMAIL_VERIFICATION = "none"
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = "optional"
+
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = config('EMAIL_PORT')
+
+# EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+# EMAIL_FILE_PATH = '/template/account/email_confirm' # change this to a proper location
+
+# ACCOUNT_EMAIL_VERIFICATION = "optinal"
+
 
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
 SIGNUP_REDIRECT_URL = '/'
+
+
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 

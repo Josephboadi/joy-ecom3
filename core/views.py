@@ -430,6 +430,18 @@ class OrderSummaryView(LoginRequiredMixin, View):
             messages.warning(self.request, "You do not have an active order")
             return redirect("/")
 
+class OrderedSummaryView(LoginRequiredMixin, View):
+    def get(self, *args, **kwargs):
+        try:
+            order = Order.objects.get(user=self.request.user, ordered=True)
+            context = {
+                'object': order
+            }
+            return render(self.request, 'order_history.html', context)
+        except ObjectDoesNotExist:
+            messages.warning(self.request, "You have no purchase history")
+            return redirect("/")
+
 
 # def get_category():
 #     queryset = Item.objects.values('categories__title')
