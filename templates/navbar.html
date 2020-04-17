@@ -47,9 +47,19 @@
           </li>
           <li class="nav-item">
             <a href="{% url 'core:request-refund' %}" class="nav-link waves-effect">
+              <span class="clearfix d-none d-sm-inline-block">Request refund</span>
+            </a>
+          </li>
+          {% comment %} <li class="nav-item">
+            <a href="{% url 'core:request-refund' %}" class="nav-link waves-effect">
+              <span class="clearfix d-none d-sm-inline-block"><img src="..." class="rounded" alt="..."></span>
+            </a>
+          </li> {% endcomment %}
+          <li class="nav-item">
+            <a href="{% url 'account_change_password' %}" class="nav-link waves-effect">
               {% comment %} <span class="badge red z-depth-1 mr-1"> {{ request.user|cart_item_ordered }} </span> {% endcomment %}
               {% comment %} <i class="fas fa-shopping-cart"></i> {% endcomment %}
-              <span class="clearfix d-none d-sm-inline-block">Request refund</span>
+              <span class="clearfix d-none d-sm-inline-block">Change password</span>
             </a>
           </li>
           <li class="nav-item">
